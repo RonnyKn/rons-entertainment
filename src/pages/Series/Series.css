@@ -1,0 +1,4 @@
+.series {
+  display: flex;
+  flex-wrap: wrap;
+}
