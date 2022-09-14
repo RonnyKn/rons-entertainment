@@ -75,7 +75,8 @@ const Search = () => {
               date={m.first_air_date || m.release_date}
               media_type={type ? "tv" : "movie"}
               vote_average={m.vote_average}
-              poster_path={m.poster_path} />))
+              poster_path={m.poster_path}
+              overview={m.overview} />))
         }
         {
           search && !movie && (type ? <h2>Tv Series not found! </h2> : <h2>Movie not found!</h2>)

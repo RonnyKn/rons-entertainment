@@ -48,6 +48,7 @@ const Movies = () => {
                 media_type="Movie"
                 vote_average={m.vote_average}
                 poster_path={m.poster_path}
+                overview={m.overview}
               />
             )
           }) : <h1>Movies not found</h1>

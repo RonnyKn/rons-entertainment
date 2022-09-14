@@ -50,6 +50,7 @@ const Series = () => {
                 media_type="tv"
                 vote_average={m.vote_average}
                 poster_path={m.poster_path}
+                overview={m.overview}
               />
             )
           }) : <h1>Tv Series not found</h1>

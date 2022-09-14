@@ -60,3 +60,54 @@
   padding: 0 2px;
   color: rgb(161, 161, 161);
 }
+
+/* modal */
+.modal {
+  text-align: center;
+}
+
+.modal .modal-content {
+  background-color: #293349;
+  color: #fff;
+}
+
+.modal-content {
+  display: flex;
+  position: relative;
+  padding: 3px;
+}
+
+.modal-tes {
+  display: flex;
+
+}
+
+.modal-image {
+  justify-content: center;
+  border: 3px solid rgb(81, 81, 82);
+  height: 440px;
+  border-radius: 10px;
+}
+
+.modal-body {
+  flex: 1;
+  flex-direction: column;
+  text-align: justify;
+}
+
+
+/* button */
+.card-button {
+  margin: 0 auto;
+  margin-top: -20px;
+  width: 110px;
+  padding: 0;
+  font-family: Gumela;
+  font-size: 14px;
+}
+
+.btnTrailer {
+  display: flex;
+  flex: 1;
+  width: 80%;
+}
