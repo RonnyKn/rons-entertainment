@@ -75,7 +75,7 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
         <Modal.Footer>
           <Button className='btnTrailer' variant='danger' target='__blank'
             href={`https://www.youtube.com/watch?v=${video}`}
-          > <YtIcon /> <strong> Watch Trailer</strong> <em>Coming Soon! </em></Button>
+          > <YtIcon /> <strong> Watch Trailer</strong></Button>
           <Button variant='secondary' onClick={handleClose}><strong> Close </strong></Button>
         </Modal.Footer>
       </Modal>
