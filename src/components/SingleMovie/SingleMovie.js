@@ -38,20 +38,21 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
         show={open}
         onHide={handleClose}
         className="modal"
-        size='lg'
-        style={{ backgroundColor: 'ActiveBorder' }}
+        size='xl'
+        style={{ backgroundColor: 'transparent' }}
       >
         <Modal.Header>
-          <Modal.Title style={{ fontFamily: 'Gumela' }} >Movie Details</Modal.Title>
+          <Modal.Title style={{ fontFamily: 'Gumela', fontSize: '2vw' }} >Movie Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="modal-content">
-            <div className='modal-tes'>
+            <div className='modal-box'>
+              <div class="ribbon"><span>Rating: {vote_average.toFixed(1)}</span></div>
               <img src={img_500 + poster_path} alt="" className="modal-image" />
               <div className="modal-body">
-                <p><strong>Title: <br /></strong>{title}</p>
-                <p><strong>Release: <br /></strong>{date}</p>
-                <p><strong>Overview Film: <br /></strong>{overview}</p>
+                <p><strong>Title : <br /></strong>{title}</p>
+                <p><strong>Release : <br /></strong>{date}</p>
+                <p><strong>Overview : <br /></strong>{overview}</p>
                 <p><strong>ImDb: <br /></strong>{vote_average.toFixed(1)}</p>
               </div>
             </div>

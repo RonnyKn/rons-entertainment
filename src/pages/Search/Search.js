@@ -14,14 +14,13 @@ const Search = () => {
   const [movie, setMovie] = useState()
   const [numPage, setNumpage] = useState()
 
-
   const darkTheme = createTheme({
     palette: {
-      type: "dark",
+      mode: "dark",
       primary: {
-        main: "#fff",
-      },
-    },
+        main: "#fff"
+      }
+    }
   });
 
   const fetchSearch = async () => {
@@ -64,7 +63,7 @@ const Search = () => {
           <Tab style={{ width: "50%", color: 'white' }} label="Search Movies" />
           <Tab style={{ width: "50%", color: 'white' }} label="Search Tv Series" />
         </Tabs>
-      </ThemeProvider>
+      </ThemeProvider >
       <div className='search-list'>
         {
           movie && movie.map((m) => (
@@ -82,11 +81,13 @@ const Search = () => {
           search && !movie && (type ? <h2>Tv Series not found! </h2> : <h2>Movie not found!</h2>)
         }
       </div>
-      {numPage > 1 && (
-        <CustomPagination
-          setPage={setPage}
-          numPage={numPage >= 50 ? 50 : numPage} />
-      )}
+      {
+        numPage > 1 && (
+          <CustomPagination
+            setPage={setPage}
+            numPage={numPage >= 50 ? 50 : numPage} />
+        )
+      }
     </div >
   )
 }
