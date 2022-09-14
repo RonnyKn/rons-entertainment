@@ -1,9 +1,10 @@
 import './SingleMovie.css'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { img_300, img_500, unavailable } from '../../config/Config'
 import { Badge } from '@mui/material'
 import { Button, Modal } from 'react-bootstrap'
 import YtIcon from '@mui/icons-material/YouTube';
+import axios from 'axios'
 
 // import TransitionsModal from '../Modal/Modal'
 
@@ -12,6 +13,19 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [video, setVideo] = useState()
+
+  const fetchVideo = async () => {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_APIKEY}&language=en-US`
+    )
+    setVideo(data.results[0]?.key)
+  }
+  useEffect(() => {
+    fetchVideo()
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <>
@@ -59,7 +73,9 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button className='btnTrailer' variant='danger' onClick={() => window.confirm("Coming Soon!")} > <YtIcon /> <strong> Watch Trailer</strong> <em>Coming Soon! </em></Button>
+          <Button className='btnTrailer' variant='danger' target='__blank'
+            href={`https://www.youtube.com/watch?v=${video}`}
+          > <YtIcon /> <strong> Watch Trailer</strong> <em>Coming Soon! </em></Button>
           <Button variant='secondary' onClick={handleClose}><strong> Close </strong></Button>
         </Modal.Footer>
       </Modal>
