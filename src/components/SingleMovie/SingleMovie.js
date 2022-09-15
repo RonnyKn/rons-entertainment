@@ -6,8 +6,6 @@ import { Button, Modal } from 'react-bootstrap'
 import YtIcon from '@mui/icons-material/YouTube';
 import axios from 'axios'
 
-// import TransitionsModal from '../Modal/Modal'
-
 const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, overview }) => {
 
   const [open, setOpen] = useState(false);
@@ -22,6 +20,7 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
     )
     setVideo(data.results[0]?.key)
   }
+
   useEffect(() => {
     fetchVideo()
     // eslint-disable-next-line
@@ -29,14 +28,6 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
 
   return (
     <>
-      {/* <TransitionsModal
-        open={open}
-        handleClose={handleClose}
-        media_type={media_type}
-        id={id}
-      /> */}
-
-
       <div className='media' onClick={handleOpen} >
         <Badge badgeContent={vote_average.toFixed(1)} color={vote_average >= 6 ? "primary" : "secondary"} />
         <div className='poster-div' >
@@ -73,9 +64,9 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button className='btnTrailer' variant='danger' target='__blank'
-            href={`https://www.youtube.com/watch?v=${video}`}
-          > <YtIcon /> <strong> Watch Trailer</strong></Button>
+          {video === undefined ? <span></span> : <Button className='btnTrailer' variant='danger' target='__blank'
+            href={`https://www.youtube.com/watch?v=${video}`}> <YtIcon /> <strong> Watch Trailer</strong></Button>}
+
           <Button variant='secondary' onClick={handleClose}><strong> Close </strong></Button>
         </Modal.Footer>
       </Modal>

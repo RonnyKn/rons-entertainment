@@ -43,6 +43,7 @@ const Movies = () => {
           movie !== 0 ? movie.map((m) => {
             return (
               <SingleMovie key={m.id}
+                id={m.id}
                 title={m.name || m.title}
                 date={m.first_air_date || m.release_date}
                 media_type="Movie"
