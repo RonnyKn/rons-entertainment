@@ -60,7 +60,6 @@ const Movies = () => {
           setPage={setPage}
           numPage={numPage >= 50 ? 50 : numPage} />
       )}
-
     </div>
   )
 }

@@ -8,6 +8,7 @@ import Movies from './pages/Movies/Movies';
 import Series from './pages/Series/Series';
 import Search from './pages/Search/Search';
 import { Container } from '@mui/material';
+import Message from './pages/Message/Message';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path='/movies' element={<Movies />}></Route>
             <Route path='/series' element={<Series />}></Route>
             <Route path='/search' element={<Search />}></Route>
+            <Route path='/message' element={<Message />}></Route>
           </Routes>
         </Container>
       </div>
