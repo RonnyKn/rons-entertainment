@@ -4,6 +4,7 @@ import { img_300, img_500, unavailable } from '../../config/Config'
 import { Badge } from '@mui/material'
 import { Button, Modal } from 'react-bootstrap'
 import YtIcon from '@mui/icons-material/YouTube';
+import CloseIcon from '@mui/icons-material/ExitToApp';
 import axios from 'axios'
 
 const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, overview }) => {
@@ -53,7 +54,7 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
           <div className="modal-content">
             <div className='modal-box'>
               <div class="ribbon"><span>Rating: {vote_average.toFixed(1)}</span></div>
-              <img src={img_500 + poster_path} alt="" className="modal-image" />
+              <img src={poster_path ? img_500 + poster_path : unavailable} alt="" className="modal-image" />
               <div className="modal-body">
                 <p><strong>Title : <br /></strong>{title}</p>
                 <p><strong>Release : <br /></strong>{date}</p>
@@ -67,7 +68,7 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
           {video === undefined ? <span></span> : <Button className='btnTrailer' variant='danger' target='__blank'
             href={`https://www.youtube.com/watch?v=${video}`}> <YtIcon /> <strong> Watch Trailer</strong></Button>}
 
-          <Button variant='secondary' onClick={handleClose}><strong> Close </strong></Button>
+          <Button variant='secondary' onClick={handleClose}><strong> Close <CloseIcon /> </strong></Button>
         </Modal.Footer>
       </Modal>
     </>

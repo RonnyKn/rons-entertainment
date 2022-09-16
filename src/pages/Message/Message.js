@@ -1,8 +1,12 @@
 import './Message.css'
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { Button, createTheme, TextareaAutosize, TextField, ThemeProvider } from '@mui/material';
+import { Button, createTheme, IconButton, TextareaAutosize, TextField, ThemeProvider } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send'
+import IGIcon from '@mui/icons-material/Instagram'
+import TwitterIcon from '@mui/icons-material/Twitter'
+
+
 
 const Message = () => {
 
@@ -40,7 +44,7 @@ const Message = () => {
   return (
     <>
       <span className='page-title'>Message Me..</span>
-      <p className='page-subTitle'><em>..if you're have some ideas or features that can improve website.❤ </em></p>
+      <p className='page-subTitle'><em>..if you've some ideas or features that can improve website.❤ </em></p>
       <ThemeProvider theme={darkTheme}>
         <div className='message'>
           <form ref={form} className='message-form' onSubmit={sendEmail}>
@@ -68,7 +72,7 @@ const Message = () => {
               className='user'
               minRows={3}
               required
-              style={{ width: 400, padding: '5px', borderRadius: '5px' }}
+              style={{ width: 400, padding: '5px', borderRadius: '5px', backgroundColor: ' #293349', color: '#fff' }}
             />
             <Button
               variant='contained'
@@ -79,6 +83,14 @@ const Message = () => {
               Send <SendIcon />
             </Button>
           </form>
+        </div>
+        <div className='message-footer'>
+          <IconButton href='https://www.instagram.com/ronny.kn/' target='__blank'>
+            <IGIcon />
+          </IconButton>
+          <IconButton href='https://www.twitter.com/ronny_kn/' target='__blank'>
+            <TwitterIcon />
+          </IconButton>
         </div>
       </ThemeProvider>
     </>
