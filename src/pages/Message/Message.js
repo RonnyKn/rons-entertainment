@@ -16,18 +16,20 @@ const Message = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
+
     emailjs.sendForm('service_2y24t5g', 'template_2gpy8ly', form.current, '8sH3i4bVXXbpdpkfh')
       .then((result) => {
-        // console.log(result.text);
         setDone(true)
+        if (isDone === true) {
+          window.alert("Thankyou for your feedback. \nHave a great day ❤.");
+        }
+        e.target.reset();
       }, (error) => {
         console.log(error.text);
       });
+
   };
-  if (isDone === true) {
-    window.alert("Thankyou for your feedback. \nHope you have a great day ❤.");
-    window.location.reload();
-  }
+
 
   const darkTheme = createTheme({
     palette: {
