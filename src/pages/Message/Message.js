@@ -1,35 +1,26 @@
 import './Message.css'
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { Button, createTheme, IconButton, TextareaAutosize, TextField, ThemeProvider } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send'
 import IGIcon from '@mui/icons-material/Instagram'
 import TwitterIcon from '@mui/icons-material/Twitter'
 
-
-
 const Message = () => {
 
   const form = useRef();
-  const [isDone, setDone] = useState(false)
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+    window.alert("Thankyou, your message has been sent successfully. \nHave a great day ❤.");
 
     emailjs.sendForm('service_2y24t5g', 'template_2gpy8ly', form.current, '8sH3i4bVXXbpdpkfh')
       .then((result) => {
-        setDone(true)
-        if (isDone === true) {
-          window.alert("Thankyou for your feedback. \nHave a great day ❤.");
-        }
         e.target.reset();
       }, (error) => {
         console.log(error.text);
       });
-
   };
-
 
   const darkTheme = createTheme({
     palette: {
