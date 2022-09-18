@@ -72,23 +72,24 @@ const Message = () => {
               className='user'
               minRows={3}
               required
-              style={{ width: 400, padding: '5px', borderRadius: '5px', backgroundColor: ' #293349', color: '#fff' }}
+              style={{ width: '100%', padding: '5px', borderRadius: '5px', backgroundColor: ' #293349', color: '#fff' }}
             />
             <Button
               variant='contained'
               type='submit'
               color='secondary'
-              style={{ margin: '20px auto', width: '150px', border: "1px solid white" }}
+              style={{ margin: '10px auto 5px auto', width: '50%', border: "1px solid white" }}
             >
               Send <SendIcon />
             </Button>
           </form>
         </div>
+        <p style={{ textAlign: 'center', fontSize: '10px', margin: '1rem  auto' }}>Find me here:</p>
         <div className='message-footer'>
-          <IconButton href='https://www.instagram.com/ronny.kn/' target='__blank'>
+          <IconButton style={{ transform: 'scale(1.8)' }} href='https://www.instagram.com/ronny.kn/' target='__blank'>
             <IGIcon />
           </IconButton>
-          <IconButton href='https://www.twitter.com/ronny_kn/' target='__blank'>
+          <IconButton style={{ transform: 'scale(1.8)' }} href='https://www.twitter.com/ronny_kn/' target='__blank'>
             <TwitterIcon />
           </IconButton>
         </div>

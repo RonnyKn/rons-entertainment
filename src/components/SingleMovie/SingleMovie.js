@@ -48,7 +48,7 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
         style={{ backgroundColor: 'transparent' }}
       >
         <Modal.Header>
-          <Modal.Title style={{ fontFamily: 'Gumela', fontSize: '2vw' }} >Movie Details</Modal.Title>
+          <Modal.Title className='m-title' style={{ fontFamily: 'Gumela', fontSize: '3vw' }} >Movie Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="modal-content">
@@ -56,10 +56,10 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
               <div class="ribbon"><span>Rating: {vote_average.toFixed(1)}</span></div>
               <img src={poster_path ? img_500 + poster_path : unavailable} alt="" className="modal-image" />
               <div className="modal-body">
-                <p><strong>Title : <br /></strong>{title}</p>
+                <p className='title-1'><strong>Title : <br /></strong>{title}</p>
+                <h3 className='title-2' style={{ fontFamily: 'Gumela', textAlign: 'center' }}><strong><em>{title}</em></strong></h3>
                 <p><strong>Release : <br /></strong>{date}</p>
                 <p><strong>Overview : <br /></strong>{overview}</p>
-                <p><strong>ImDb: <br /></strong>{vote_average.toFixed(1)}</p>
               </div>
             </div>
           </div>

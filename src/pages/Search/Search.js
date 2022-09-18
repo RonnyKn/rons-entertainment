@@ -47,6 +47,7 @@ const Search = () => {
             label='Search'
             variant='outlined'
             color='primary'
+            required
             onChange={(e) => setSearch(e.target.value)}
           />
           <Button onClick={fetchSearch} variant="contained" style={{ marginLeft: "15px" }}> <SearchIcon /> </Button><br />

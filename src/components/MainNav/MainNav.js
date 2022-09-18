@@ -41,7 +41,7 @@ export default function SimpleBottomNavigation() {
       onChange={(event, newValue) => {
         setValue(newValue);
       }}
-      style={{ color: "white", backgroundColor: "#2d313a" }}
+      style={{ color: "white", backgroundColor: "#2d313a", gap: '0' }}
     >
       <BottomNavigationAction
         active='true'
