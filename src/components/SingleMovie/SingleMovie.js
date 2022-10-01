@@ -56,7 +56,7 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
         <Modal.Body>
           <div className="modal-content">
             <div className='modal-box'>
-              <div class="ribbon"><span>Rating: {vote_average.toFixed(1)}</span></div>
+              <div className="ribbon"><span>Rating: {vote_average.toFixed(1)}</span></div>
               <img src={poster_path ? img_500 + poster_path : unavailable} alt="" className="modal-image" />
               <div className="modal-body">
                 <p className='title-1'><strong>Title : <br /></strong>{title}</p>
