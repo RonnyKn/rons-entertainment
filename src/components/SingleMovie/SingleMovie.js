@@ -51,7 +51,7 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
         style={{ backgroundColor: 'transparent' }}
       >
         <Modal.Header>
-          <Modal.Title className='m-title' style={{ fontFamily: 'Gumela', fontSize: '3vw' }} >Movie Details</Modal.Title>
+          <Modal.Title className='m-title' style={{ fontFamily: 'Gumela', fontSize: '2rem' }} > <strong> Movie Details </strong></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="modal-content">
@@ -71,13 +71,13 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
           {video === undefined ? <span></span> :
             <div className='trailers'>
               <Button className='btnTrailer' variant='danger' target='__blank'
-                href={`https://www.youtube.com/watch?v=${video}`}> <YtIcon /> <strong> Trailer 1</strong>
+                href={`https://www.youtube.com/watch?v=${video}`}> <YtIcon /> <strong className='strong-trailer'> Trailer 1</strong>
               </Button>
               <Button className='btnTrailer' variant='danger' target='__blank'
-                href={`https://www.youtube.com/watch?v=${video2}`}> <YtIcon /> <strong>  Trailer 2</strong>
+                href={`https://www.youtube.com/watch?v=${video2}`}> <YtIcon /> <strong className='strong-trailer'> Trailer 2</strong>
               </Button>
               <Button className='btnTrailer' variant='danger' target='__blank'
-                href={`https://www.youtube.com/watch?v=${video3}`}> <YtIcon /> <strong> Trailer 3</strong>
+                href={`https://www.youtube.com/watch?v=${video3}`}> <YtIcon /> <strong className='strong-trailer'> Trailer 3</strong>
               </Button>
             </div>
           }

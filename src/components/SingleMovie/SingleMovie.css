@@ -187,9 +187,8 @@
     height: 500px;
   }
 
-  .btnTrailer {
-    font-size: 20px;
-    color: aqua;
+  .strong-trailer {
+    font-size: 3vw;
   }
 
   .title-1 {
@@ -199,10 +198,6 @@
   .title-2 {
     display: block;
     margin-bottom: 1rem;
-  }
-
-  .m-title {
-    font-size: large;
   }
 
   .close {
