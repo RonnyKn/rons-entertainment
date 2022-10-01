@@ -23,6 +23,15 @@ const Search = () => {
     }
   });
 
+  const submitSearch = async (e) => {
+    e.preventDefault();
+    const { data } = await axios.get(`
+    https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${process.env.REACT_APP_APIKEY}&language=en-US&query=${search}&page=${page}&include_adult=false
+    `)
+    setMovie(data.results)
+    setNumpage(data.total_pages)
+  }
+
   const fetchSearch = async () => {
     const { data } = await axios.get(`
     https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${process.env.REACT_APP_APIKEY}&language=en-US&query=${search}&page=${page}&include_adult=false
@@ -40,8 +49,9 @@ const Search = () => {
     <div>
       <span style={{ marginBottom: '5px' }} className='page-title'>Search</span>
       <ThemeProvider theme={darkTheme}>
-        <div className='search'>
+        <form className='search' onSubmit={submitSearch}>
           <TextField
+            type='text'
             style={{ flex: 1 }}
             className='searchBox'
             label='Search'
@@ -50,8 +60,8 @@ const Search = () => {
             required
             onChange={(e) => setSearch(e.target.value)}
           />
-          <Button onClick={fetchSearch} variant="contained" style={{ marginLeft: "15px" }}> <SearchIcon /> </Button><br />
-        </div>
+          <Button type='submit' variant="contained" style={{ marginLeft: "15px" }}> <SearchIcon /> </Button><br />
+        </form>
         <Tabs
           value={type}
           indicatorColor="primary"
