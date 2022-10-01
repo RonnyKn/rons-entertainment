@@ -12,14 +12,17 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   const [video, setVideo] = useState()
+  const [video2, setVideo2] = useState()
+  const [video3, setVideo3] = useState()
 
   const fetchVideo = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_APIKEY}&language=en-US`
     )
     setVideo(data.results[0]?.key)
+    setVideo2(data.results[1]?.key)
+    setVideo3(data.results[2]?.key)
   }
 
   useEffect(() => {
@@ -32,7 +35,7 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
       <div className='media' onClick={handleOpen} >
         <Badge badgeContent={vote_average.toFixed(1)} color={vote_average >= 6 ? "primary" : "secondary"} />
         <div className='poster-div' >
-          <img className='poster' src={poster_path ? `${img_300}${poster_path}` : unavailable} alt={title} />
+          <img src={poster_path ? `${img_300}${poster_path}` : unavailable} alt={title} />
         </div>
         <h5 style={{ textOverflow: "ellipsis", whiteSpace: "nowrap", overflow: "hidden" }} className='title'>{title}</h5>
         <span className='subtitle'>{media_type === "tv" ? "TV Series" : "Movie"}
@@ -65,10 +68,20 @@ const SingleMovie = ({ id, poster_path, title, date, media_type, vote_average, o
           </div>
         </Modal.Body>
         <Modal.Footer>
-          {video === undefined ? <span></span> : <Button className='btnTrailer' variant='danger' target='__blank'
-            href={`https://www.youtube.com/watch?v=${video}`}> <YtIcon /> <strong> Watch Trailer</strong></Button>}
-
-          <Button variant='secondary' onClick={handleClose}><strong> Close <CloseIcon /> </strong></Button>
+          {video === undefined ? <span></span> :
+            <div className='trailers'>
+              <Button className='btnTrailer' variant='danger' target='__blank'
+                href={`https://www.youtube.com/watch?v=${video}`}> <YtIcon /> <strong> Trailer 1</strong>
+              </Button>
+              <Button className='btnTrailer' variant='danger' target='__blank'
+                href={`https://www.youtube.com/watch?v=${video2}`}> <YtIcon /> <strong>  Trailer 2</strong>
+              </Button>
+              <Button className='btnTrailer' variant='danger' target='__blank'
+                href={`https://www.youtube.com/watch?v=${video3}`}> <YtIcon /> <strong> Trailer 3</strong>
+              </Button>
+            </div>
+          }
+          <Button className='close' variant='secondary' onClick={handleClose}><strong> Close <CloseIcon /> </strong></Button>
         </Modal.Footer>
       </Modal>
     </>

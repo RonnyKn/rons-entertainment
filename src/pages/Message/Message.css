@@ -1,15 +1,8 @@
 .message {
   width: 90vh;
-  margin: auto;
+  margin: 1rem auto;
   font-size: 14px;
   font-family: Gumela;
-}
-
-.page-subTitle {
-  font-size: 12px;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
 }
 
 .message-form {
@@ -33,7 +26,7 @@
 /* ressponsive */
 @media (max-width:767px) {
   .message {
-    width: 50%;
+    width: 90%;
   }
 
   .message-footer {

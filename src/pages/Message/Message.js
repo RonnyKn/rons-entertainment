@@ -37,7 +37,6 @@ const Message = () => {
   return (
     <>
       <span className='page-title'>Message Me..</span>
-      <p className='page-subTitle'><em>..if you've some ideas or features that can improve website.❤ </em></p>
       <ThemeProvider theme={darkTheme}>
         <div className='message'>
           <form ref={form} className='message-form' onSubmit={sendEmail}>
