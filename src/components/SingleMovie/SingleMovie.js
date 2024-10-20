@@ -41,7 +41,7 @@ const SingleMovie = ({
     <>
       <div className="media" onClick={handleOpen}>
         <Badge
-          badgeContent={vote_average?.toFixed(1)}
+          badgeContent={vote_average?.toPrecision(1)}
           color={vote_average >= 6 ? "primary" : "secondary"}
         />
         <div className="poster-div">
@@ -86,7 +86,7 @@ const SingleMovie = ({
           <div className="modal-content">
             <div className="modal-box">
               <div className="ribbon">
-                <span>Rating: {vote_average?.toFixed(1)}</span>
+                <span>Rating: {vote_average?.toPrecision(1)}</span>
               </div>
               <img
                 src={poster_path ? img_500 + poster_path : unavailable}
