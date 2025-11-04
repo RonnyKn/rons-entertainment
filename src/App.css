@@ -1,0 +1,46 @@
+@font-face {
+  font-family: Gumela;
+  src: url("../src/fonts/Gumela\ Regular.otf");
+}
+
+h5 {
+  font-family: Gumela;
+}
+
+* {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  min-height: 100vh;
+  background-color: #39445a;
+  padding-top: 110px;
+  padding-bottom: 70px;
+  color: white;
+
+}
+
+@media (max-width:700px) {
+  .app {
+    padding-top: 70px;
+  }
+}
+
+.page-title {
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  font-family: Gumela;
+  font-size: 2vw;
+  padding: 4px;
+  border-radius: 50px;
+  color: white;
+}
+
+@media (max-width:1000px) {
+  .page-title {
+    font-size: 6.4vw;
+  }
+}

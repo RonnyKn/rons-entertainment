@@ -1,0 +1,239 @@
+.media {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 5px;
+  margin: 5px 15px;
+  background-color: #282c34;
+  border-radius: 10px;
+  position: relative;
+  border: 1px solid rgb(135, 133, 133);
+}
+
+.media:hover .subtitle {
+  color: rgb(99, 99, 99);
+  font-weight: bold;
+}
+
+.media:hover {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+
+.media:hover img {
+  transform: scale(1.1);
+  transition: 0.8 ease;
+}
+
+.poster-div {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.poster-div img {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  border-radius: 10px;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: 17px;
+  padding: 8px 0;
+}
+
+.subtitle {
+  font-family: Gumela;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 3px;
+  padding: 0 2px;
+  color: rgb(161, 161, 161);
+}
+
+/* modal */
+.modal .modal-content {
+  background-color: #293349;
+  color: #fff;
+}
+
+.modal-content {
+  display: flex;
+  position: relative;
+  padding: 3px;
+}
+
+.modal-box {
+  display: flex;
+
+}
+
+.modal-image {
+  justify-content: center;
+  border: 3px solid rgb(81, 81, 82);
+  height: 440px;
+  border-radius: 10px;
+}
+
+.modal-body {
+  flex: 1;
+  flex-direction: column;
+  text-align: justify;
+}
+
+.title-2 {
+  display: none;
+}
+
+/* ribon */
+.ribbon {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 50%;
+  height: 50%;
+  text-align: right;
+}
+
+.ribbon span {
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: white;
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px;
+  right: -21px;
+  font-family: Gumela;
+}
+
+.ribbon span::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 100%;
+  z-index: -1;
+  border-left: 3px solid #A7A7A7;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #A7A7A7;
+}
+
+.ribbon span::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #A7A7A7;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #A7A7A7;
+}
+
+
+/* button */
+.card-button {
+  margin: 0 auto;
+  margin-top: -20px;
+  width: 110px;
+  padding: 0;
+  font-family: Gumela;
+  font-size: 14px;
+}
+
+.trailers {
+  display: flex;
+  gap: .5rem;
+  flex: 1;
+}
+
+.btnTrailer {
+  width: 100%;
+  padding: 0;
+}
+
+/* responsive */
+@media (max-width: 767px) {
+  .media {
+    width: 40%;
+    height: 100%;
+    margin: .5rem auto;
+  }
+
+  .poster-div img {
+    height: 20%;
+  }
+
+  .modal-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-image {
+    height: 500px;
+  }
+
+  .strong-trailer {
+    font-size: 3vw;
+  }
+
+  .title-1 {
+    display: none;
+  }
+
+  .title-2 {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .close {
+    width: 100%;
+  }
+}
+
+@media (min-width:768px) and (max-width:990px) {
+  .media {
+    width: 30%;
+    margin: .5rem auto;
+  }
+
+  .modal-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-image {
+    height: 500px;
+  }
+
+  .title-1 {
+    display: none;
+  }
+
+  .title-2 {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .m-title {
+    font-size: large;
+  }
+
+  .close {
+    width: 100%;
+  }
+}
