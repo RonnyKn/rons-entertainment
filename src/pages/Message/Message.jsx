@@ -8,38 +8,40 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 
 const Message = () => {
 
-  const form = useRef();
+  const formRef = useRef();
 
-  const sendEmail = (e) => {
+   const sendEmail = async (e) => {
     e.preventDefault();
-    window.alert("Thankyou, your message has been sent successfully. \nHave a great day ❤.");
 
-    emailjs.sendForm('service_2y24t5g', 'template_2gpy8ly', form.current, '8sH3i4bVXXbpdpkfh')
-      .then((result) => {
-        e.target.reset();
-      }, (error) => {
-        console.log(error.text);
-      });
+    try {
+      await emailjs.sendForm(
+        'service_2y24t5g',
+        'template_2gpy8ly',
+        formRef.current,
+        '8sH3i4bVXXbpdpkfh'
+      );
+      alert("Thank you, your message has been sent successfully.\nHave a great day ❤");
+      e.target.reset();
+    } catch (error) {
+      console.error("Email sending failed:", error);  
+      alert("Oops! Something went wrong. Please try again.");
+    }
   };
 
-  const darkTheme = createTheme({
+    const darkTheme = createTheme({
     palette: {
       mode: 'dark',
-      primary: {
-        main: '#fff'
-      },
-      secondary: {
-        main: '#293349'
-      }
+      primary: { main: '#fff' },
+      secondary: { main: '#293349' }
     }
-  })
+  });
 
   return (
     <>
       <span className='page-title'>Message Me..</span>
       <ThemeProvider theme={darkTheme}>
         <div className='message'>
-          <form ref={form} className='message-form' onSubmit={sendEmail}>
+          <form ref={formRef} className='message-form' onSubmit={sendEmail}>
             <TextField
               type='text'
               name='user_name'
