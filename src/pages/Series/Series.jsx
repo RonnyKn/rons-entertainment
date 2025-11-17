@@ -15,11 +15,11 @@ const Series = () => {
   const [genres, setGenres] = useState([])
   const genreURL = useGenre(selectedGenres)
   const API_KEY = import.meta.env.VITE_APIKEY;
-  const DISCOVER_MOVIE = import.meta.env.VITE_APP_DISCOVER_MOVIE;
+  const DISCOVER_TV = import.meta.env.VITE_APP_DISCOVER_TV;
 
   const fetchSeries = async () => {
     const { data } = await axios.get(`
-    ${DISCOVER_MOVIE}${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}
+    ${DISCOVER_TV}${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}
     `)
     setMovie(data.results)
     setNumPage(data.total_pages)
@@ -47,6 +47,7 @@ const Series = () => {
           movie !== 0 ? movie.map((m) => {
             return (
               <SingleMovie key={m.id}
+                id={m.id}
                 title={m.name || m.title}
                 date={m.first_air_date || m.release_date}
                 media_type="tv"
