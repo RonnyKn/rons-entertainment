@@ -16,30 +16,58 @@ const SingleMovie = ({
   vote_average,
   overview,
 }) => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const [video, setVideo] = useState();
-  const [video2, setVideo2] = useState();
-  const [video3, setVideo3] = useState();
+  // const [open, setOpen] = useState(false);
+  // const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
+  // const [video, setVideo] = useState();
+  // const [video2, setVideo2] = useState();
+  // const [video3, setVideo3] = useState();
 
+  const [open, setOpen] = useState(false);
+  const [videos, setVideos] = useState([]); // cache trailer list
   const API_KEY = import.meta.env.VITE_APIKEY;
 
-  const fetchVideo = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${API_KEY}&language=en-US`
-    );
-    setVideo(data.results[0]?.key);
-    setVideo2(data.results[1]?.key);
-    setVideo3(data.results[2]?.key);
+    const handleOpen = async () => {
+    setOpen(true);
+
+    // Jika sudah pernah fetch → tidak fetch lagi
+    if (videos.length > 0) return;
+
+    try {
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${API_KEY}&language=en-US`
+      );
+
+      // Ambil max 3 video
+      setVideos(data.results.slice(0, 3));
+    } catch (error) {
+      console.error("Failed to fetch trailer:", error);
+    }
   };
 
-  useEffect(() => {
-    fetchVideo();
-    // eslint-disable-next-line
-  }, []);
+  const handleClose = () => setOpen(false);
 
-  return (
+  // RESET video ketika ID movie berubah (pagination, search, genres)
+  useEffect(() => {
+    setVideos([]);
+  }, [id, media_type]);
+
+
+//   const fetchVideo = async () => {
+//     const { data } = await axios.get(
+//       `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${API_KEY}&language=en-US`
+//     );
+//     setVideo(data.results[0]?.key);
+//     setVideo2(data.results[1]?.key);
+//     setVideo3(data.results[2]?.key);
+//   };
+
+//  useEffect(() => {
+//   if (id) fetchVideo();
+// }, [id, media_type]);
+
+
+   return (
     <>
       <div className="media" onClick={handleOpen}>
         <Badge
@@ -80,7 +108,6 @@ const SingleMovie = ({
             className="m-title"
             style={{ fontFamily: "Gumela", fontSize: "2rem" }}
           >
-            {" "}
             <strong> Movie Details </strong>
           </Modal.Title>
         </Modal.Header>
@@ -97,77 +124,49 @@ const SingleMovie = ({
               />
               <div className="modal-body">
                 <p className="title-1">
-                  <strong>
-                    Title : <br />
-                  </strong>
+                  <strong>Title : <br /></strong>
                   {title}
                 </p>
                 <h3
                   className="title-2"
                   style={{ fontFamily: "Gumela", textAlign: "center" }}
                 >
-                  <strong>
-                    <em>{title}</em>
-                  </strong>
+                  <strong><em>{title}</em></strong>
                 </h3>
                 <p>
-                  <strong>
-                    Release : <br />
-                  </strong>
+                  <strong>Release : <br /></strong>
                   {date}
                 </p>
                 <p>
-                  <strong>
-                    Overview : <br />
-                  </strong>
+                  <strong>Overview : <br /></strong>
                   {overview}
                 </p>
               </div>
             </div>
           </div>
         </Modal.Body>
+
         <Modal.Footer>
-          {video === undefined ? (
+          {videos.length === 0 ? (
             <span></span>
           ) : (
             <div className="trailers">
-              <Button
-                className="btnTrailer"
-                variant="danger"
-                target="__blank"
-                href={`https://www.youtube.com/watch?v=${video}`}
-              >
-                {" "}
-                <YtIcon />{" "}
-                <strong className="strong-trailer"> Trailer 1</strong>
-              </Button>
-              <Button
-                className="btnTrailer"
-                variant="danger"
-                target="__blank"
-                href={`https://www.youtube.com/watch?v=${video2}`}
-              >
-                {" "}
-                <YtIcon />{" "}
-                <strong className="strong-trailer"> Trailer 2</strong>
-              </Button>
-              <Button
-                className="btnTrailer"
-                variant="danger"
-                target="__blank"
-                href={`https://www.youtube.com/watch?v=${video3}`}
-              >
-                {" "}
-                <YtIcon />{" "}
-                <strong className="strong-trailer"> Trailer 3</strong>
-              </Button>
+              {videos.map((v, i) => (
+                <Button
+                  key={v.key}
+                  className="btnTrailer"
+                  variant="danger"
+                  target="__blank"
+                  href={`https://www.youtube.com/watch?v=${v.key}`}
+                >
+                  <YtIcon /> <strong className="strong-trailer">Trailer {i + 1}</strong>
+                </Button>
+              ))}
             </div>
           )}
+
           <Button className="close" variant="secondary" onClick={handleClose}>
-            <strong>
-              {" "}
-              Close <CloseIcon />{" "}
-            </strong>
+            <strong> Close <CloseIcon /> </strong>
           </Button>
         </Modal.Footer>
       </Modal>
