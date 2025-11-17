@@ -15,10 +15,10 @@ const Movies = () => {
   const [genres, setGenres] = useState([])
   const genreURL = useGenre(selectedGenres)
   const API_KEY = import.meta.env.VITE_APIKEY;
-  const APP_DISCOVER_TV = import.meta.env.VITE_APP_DISCOVER_TV;
+  const APP_DISCOVER_MOVIE = import.meta.env.VITE_APP_DISCOVER_MOVIE;
 
   const fetchMovies = async () => {
-    const { data } = await axios.get(`${APP_DISCOVER_TV}${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}`)
+    const { data } = await axios.get(`${APP_DISCOVER_MOVIE}${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}`)
     setMovie(data.results)
     setNumPage(data.total_pages)
   }
@@ -48,7 +48,7 @@ const Movies = () => {
                 id={m.id}
                 title={m.name || m.title}
                 date={m.first_air_date || m.release_date}
-                media_type="Movie"
+                media_type="movie"
                 vote_average={m.vote_average}
                 poster_path={m.poster_path}
                 overview={m.overview}
