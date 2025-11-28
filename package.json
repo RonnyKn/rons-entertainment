@@ -15,7 +15,7 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.4",
     "@mui/lab": "^7.0.1-beta.18",
-    "@mui/material": "^7.3.4",
+    "@mui/material": "^7.3.5",
     "@mui/styles": "^6.5.0",
     "axios": "^1.13.1",
     "bootstrap": "^5.3.8",
