@@ -17,7 +17,7 @@
     "@mui/lab": "^7.0.1-beta.18",
     "@mui/material": "^7.3.4",
     "@mui/styles": "^6.5.0",
-    "axios": "^1.13.1",
+    "axios": "^1.13.5",
     "bootstrap": "^5.3.8",
     "dotenv": "^17.2.3",
     "emailjs": "^4.0.3",
